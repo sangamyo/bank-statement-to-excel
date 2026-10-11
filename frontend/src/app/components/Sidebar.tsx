@@ -1,6 +1,23 @@
 import { Link, useLocation } from 'react-router';
 import { LayoutDashboard, FileText, History, Settings, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
+
+// Tailwind's `lg` breakpoint: the sidebar is always visible at this width and above.
+const DESKTOP_QUERY = '(min-width: 1024px)';
+
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(DESKTOP_QUERY).matches,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_QUERY);
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return isDesktop;
+}
 
 interface SidebarProps {
   isOpen: boolean;
@@ -16,6 +33,8 @@ const menuItems = [
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const location = useLocation();
+  const isDesktop = useIsDesktop();
+  const visible = isDesktop || isOpen;
 
   return (
     <>
@@ -29,8 +48,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Sidebar */}
       <motion.aside
-        initial={{ x: -280 }}
-        animate={{ x: isOpen ? 0 : -280 }}
+        initial={false}
+        animate={{ x: visible ? 0 : -288 }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         className="fixed left-0 top-0 h-full w-72 z-50 lg:translate-x-0 lg:static"
         style={{
