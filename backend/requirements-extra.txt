@@ -1,0 +1,5 @@
+# Optional: Camelot fallback for difficult table layouts.
+# The core pipeline works without these; camelot is imported lazily.
+-r requirements.txt
+camelot-py==1.0.9
+opencv-python-headless==4.12.0.88

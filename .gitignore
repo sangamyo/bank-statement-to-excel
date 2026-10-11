@@ -1,0 +1,35 @@
+# Dependencies / builds
+node_modules/
+dist/
+build/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.tsbuildinfo
+
+# Environment (keep the examples)
+.env
+.env.*
+!.env.example
+
+# Runtime data — NEVER commit statements or their conversions
+data/
+uploads/
+outputs/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.pdf
+*.xlsx
+*.xls
+*.csv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.vercel/
