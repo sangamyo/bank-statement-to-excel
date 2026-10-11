@@ -5,10 +5,10 @@ import { Navbar } from '../components/Navbar';
 import { User } from '../types';
 import { Toaster } from 'sonner';
 
-const mockUser: User = {
-  name: 'Sarah Johnson',
-  email: 'sarah@example.com',
-  avatar: 'https://images.unsplash.com/photo-1655249481446-25d575f1c054?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0JTIwYnVzaW5lc3N8ZW58MXx8fHwxNzc0MDMzNTcxfDA&ixlib=rb-4.1.0&q=80&w=200',
+const guestUser: User = {
+  name: 'Guest',
+  email: 'History is private to this browser',
+  avatar: '',
 };
 
 export function Layout() {
@@ -35,7 +35,7 @@ export function Layout() {
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Navbar */}
-          <Navbar onMenuClick={() => setSidebarOpen(true)} user={mockUser} />
+          <Navbar onMenuClick={() => setSidebarOpen(true)} user={guestUser} />
 
           {/* Page Content */}
           <main className="flex-1 overflow-y-auto p-6 lg:p-8">

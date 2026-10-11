@@ -73,11 +73,17 @@ export function Navbar({ onMenuClick, user }: NavbarProps) {
                 background: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)',
               }}
             >
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-full h-full object-cover"
-              />
+              {user.avatar ? (
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="w-full h-full flex items-center justify-center text-sm font-semibold text-white">
+                  {user.name.charAt(0).toUpperCase()}
+                </span>
+              )}
             </div>
           </div>
         </div>
