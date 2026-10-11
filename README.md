@@ -1,5 +1,12 @@
 # Bank Statement to Excel
 
+**Live demo:** https://bank-statement-to-excel-virid.vercel.app
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sangamyo/bank-statement-to-excel)
+
+The backend deploys to Render from [`render.yaml`](render.yaml), and the frontend is on Vercel. On Render's free plan the API sleeps when idle, so the first request after a while can take about 50 seconds.
+
+
 Convert bank statement PDFs into clean, styled Excel workbooks.
 
 Upload a text-based statement PDF. The backend rebuilds the transaction table from the positions of the words on each page, so it doesn't depend on table borders. It merges multi-line narrations, normalises dates and amounts, checks that the running balance adds up, and returns an `.xlsx` with three sheets:

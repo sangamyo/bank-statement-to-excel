@@ -1,0 +1,25 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Deploy: https://render.com/deploy?repo=https://github.com/sangamyo/bank-statement-to-excel
+# The free plan has no persistent disk, so DATA_DIR is wiped on every restart.
+# That suits a public demo, since uploads are deleted anyway.
+services:
+  - type: web
+    name: hok-bank2excel-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://bank-statement-to-excel-virid.vercel.app
+      - key: ALLOWED_ORIGIN_REGEX
+        value: ^https://bank-statement-to-excel(-[a-z0-9-]+)?\.vercel\.app$
+      - key: RETENTION_HOURS
+        value: "6"
+      - key: MAX_UPLOAD_MB
+        value: "10"
