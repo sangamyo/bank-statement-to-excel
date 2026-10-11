@@ -6,6 +6,8 @@
 
 The backend deploys to Render from [`render.yaml`](render.yaml), and the frontend is on Vercel. On Render's free plan the API sleeps when idle, so the first request after a while can take about 50 seconds.
 
+![Screenshot](docs/screenshot.png)
+
 
 Convert bank statement PDFs into clean, styled Excel workbooks.
 
@@ -149,3 +151,7 @@ Bank statements are sensitive, so this demo is built to keep as little as possib
 ## Credits
 
 UI components from [shadcn/ui](https://ui.shadcn.com/) (MIT). See `frontend/ATTRIBUTIONS.md`.
+
+## License
+
+[MIT](LICENSE) © Hari Om Kasaundhan
